@@ -1,19 +1,29 @@
-# olostep CLI (staging test build)
+# Olostep CLI (staging)
 
 Install or update (macOS or Linux, Node.js 22.18 or newer):
 
 ```
-curl -fsSL https://raw.githubusercontent.com/samyakkkk/olostep-cli/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/samyakkkk/olostep-cli/main/install.sh | sh
 ```
 
-It installs into `~/.olostep` (no sudo) and adds it to your PATH. Then, in a new terminal:
+It installs into `~/.olostep` without sudo and makes `olostep` available on PATH. If prompted, open a new terminal. Then run:
 
 ```
-olostep auth login
+olostep
+```
+
+Choose **Sign in** to connect your Olostep account. You can also run `olostep auth login` directly. Product commands require sign-in; help and feedback are available while signed out.
+
+```sh
+olostep auth status
+olostep scrape example.com -f markdown --dry-run
+olostep scrape example.com -f markdown
+olostep search "your query"
 olostep --help
-olostep chat "What is my credit balance?"
 ```
 
-Run the same install command again to get the latest build. This build talks to Olostep's staging server.
+`auth status` shows your account, team, plan and credit balance. `--dry-run` previews a command without executing it. Scraping, searching and other jobs use your normal Olostep credits. Add `--json` for scripts.
 
-To remove it: `rm -rf ~/.olostep` and delete the `# olostep CLI` lines from your shell profile.
+Run the install command again to update. This build uses Olostep's staging server. Remove another existing `olostep` installation before using this installer.
+
+To uninstall: `npm uninstall --global --prefix "$HOME/.olostep" olostep`.
